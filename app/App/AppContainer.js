@@ -4,12 +4,13 @@ import { Actions } from 'reducer.js'
 import App from './App.js'
 
 const mapStateToProps = (state) => ({
-  loader: state.loader
+  loader: state.loader,
+  posts: state.posts
 })
 
 const mapDispatchToProps = (dispatch) => ({
    onLoadContent: () => dispatch({type: Actions.LOAD_CONTENT, value: false}),
-   onLoader: () =>dispatch({type: Actions.LOAD_CONTENT, value: true})
+   onLoader: () => dispatch({type: Actions.LOAD_CONTENT, value: true})
  })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
