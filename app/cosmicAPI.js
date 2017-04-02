@@ -1,3 +1,5 @@
+import Cosmic from 'cosmicjs'
+
 export function loadPosts() {
     return function(dispatch) {
       return getAllPosts().then( posts => {
@@ -8,13 +10,14 @@ export function loadPosts() {
     }
 }
 
-function getAllPosts() {
-  return fetch("https://api.cosmicjs.com/v1/macarenapoo?pretty=true")
-    .then( response => {
-      return response.json()
-    }).catch( error => {
-      return error
+const bucket = { slug: 'macarenapoo'};
+
+function getAllPosts() {
+  return new Promise( (resolve) => {
+    Cosmic.getObjects({ bucket }, (error, response) => {
+      resolve(response.objects.all)
     })
+  })
 }
 
 function loadPostsSuccess(posts) {

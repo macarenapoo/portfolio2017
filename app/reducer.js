@@ -25,7 +25,7 @@ export const reducer = (state, action) => {
     case Actions.RECEIVE_POSTS: {
       return Immutable.merge(state, {
         loader: true,
-        posts: action.posts.bucket.objects
+        posts: action.posts
       });
     }
 
