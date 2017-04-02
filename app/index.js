@@ -7,6 +7,7 @@ import * as Reducer from './reducer'
 import App from './App'
 import * as CosmicAPI from './cosmicAPI'
 
+require('../src/main.css')
 
 const store = createStore(
   Reducer.reducer,

@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from './App.css'
+import Header from 'components/Header'
+import TimeLine from 'components/TimeLine'
 
 const App = ({
   loader,
@@ -9,11 +11,10 @@ const App = ({
 }) => {
   console.log(posts)
   return (
-    <ul>
-      { posts.map((post) => {
-        return (  <li>{post.title}</li>)
-      }) }
-    </ul>
+    <div className={ styles.container }>
+      <Header />
+      <TimeLine />
+    </div>
   )
 }
 
