@@ -1,11 +1,14 @@
 .timeLine {
-
+  margin: 100px 0;
 }
 
 .yearEvents {
   margin-left: 50%;
   border-left: solid 1px $gray;
-  min-height: 240px;
+}
+
+.yearWrapper:first-of-type .month {
+  min-height: 0px;
 }
 
 .event {
@@ -61,4 +64,13 @@
   top: 5px;
   opacity: 1;
   left:-100%;
+}
+
+.year2 {
+  margin-left: 50%;
+  border-left: solid 1px $gray;
+}
+
+.month {
+  min-height: 20px;
 }

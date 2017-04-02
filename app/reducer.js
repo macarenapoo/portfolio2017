@@ -17,7 +17,6 @@ export const reducer = (state, action) => {
       return state.set("loader", action.value )
 
     case Actions.REQUEST_POSTS: {
-      console.log("Request Posts");
       const posts = loadPosts()
 
       return state.set("loader", true);

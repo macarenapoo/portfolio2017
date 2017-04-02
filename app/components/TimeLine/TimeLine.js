@@ -10,18 +10,22 @@ const TimeLine = ({
   return (
     <div className={ styles.timeLine }>
       { timeline.map( (year) => (
-       <div>
-          <ul className={ styles.yearEvents }>
-           { year.events.map( (event) => (
-             <li className={ styles.event }>
-               <div className={ styles.date }>
-                { moment(event.date).format("MMMM YYYY")}
-               </div>
-               <div className={ styles.bullet }></div>
-               <div className={ styles.title }>{event.title}</div>
-             </li>
+       <div className={ styles.yearWrapper }>
+          <div className={ styles.yearEvents }>
+           { year.months.map( (month) => (
+             <div className={ styles.month }>
+               { month.events.map( (event) => (
+                 <div className={ styles.event }>
+                   <div className={ styles.date }>
+                    { moment(event.date).format("MMMM YYYY")}
+                   </div>
+                   <div className={ styles.bullet }></div>
+                   <div className={ styles.title }>{event.title}</div>
+                 </div>
+               ))}
+             </div>
            ))}
-          </ul>
+          </div>
           <div className={ styles.year }>{ year.year }</div>
        </div>
       ) )}

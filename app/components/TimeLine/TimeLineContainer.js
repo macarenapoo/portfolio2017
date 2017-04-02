@@ -13,7 +13,7 @@ function getDate(post) {
 }
 
 function formatTimeLine(posts) {
-  console.log(posts)
+  // get the relevant information for each event
   const orderedEvents = _.chain(posts)
       .map((post) => ({
         type: post.type_slug,
@@ -22,17 +22,31 @@ function formatTimeLine(posts) {
         content: post.content}))
       .orderBy(['date'],['desc'])
       .value(),
+    // get the range of years for the data set
     years = _.map(orderedEvents,
       (event) => parseInt(moment(event.date).format("Y"))),
     firstYear = _.min(years),
     lastYear = _.max(years),
     timeline = []
 
+  // get the events per year
   for( let i = firstYear; i <= lastYear; i++) {
+    const yearEvents = _.filter( orderedEvents,
+      (event) => parseInt(moment(event.date).format("Y")) === i )
+    let monthEvents = []
+
+    // divide the events per month (for styling purposes)
+    for( let j = 12; j >= 1; j-- ) {
+      monthEvents.push({
+        month: moment(j, "M").format("MMMM"),
+        events: _.filter( yearEvents,
+          (event) => parseInt(moment(event.date).format("M")) === j)
+      })
+    }
+
     timeline.push({
       year: i,
-      events: _.filter( orderedEvents,
-        (event) => parseInt(moment(event.date).format("Y")) === i )
+      months: monthEvents
     })
   }
 
