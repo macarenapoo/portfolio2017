@@ -60,6 +60,24 @@
 .content {
   opacity: 0;
   transition: opacity .3s ease-in;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 15%;
+  top: 0px;
+  opacity: 0;
+  transition: all .3s ease-in;
+}
+
+.closeActive {
+  opacity: 1;
+  right: 10%;
+}
+
+.activeContent .close {
+  opacity: 1;
 }
 
 .activeContent {

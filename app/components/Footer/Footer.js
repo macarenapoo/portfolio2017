@@ -8,11 +8,14 @@ const Footer = () => (
     <a className={ styles.h2 } href="mailto:m@macarenapoo.com">m@macarenapoo.com</a>
     <div className={ styles.socialIcons }>
       <a className={ styles.email } href="mailto:m@macarenapoo.com" target="_new">
-
-          { Icons.Email }
+        { Icons.Email }
       </a>
-      <a className={ styles.linkedIn } href="https://ca.linkedin.com/in/macarena-poo-291b2670" target="_new"></a>
-      <a className={ styles.twitter } href="https://twitter.com/macarenapoo" target="_new"></a>
+      <a className={ styles.linkedIn } href="https://ca.linkedin.com/in/macarena-poo-291b2670" target="_new">
+        { Icons.LinkedIn }
+      </a>
+      <a className={ styles.twitter } href="https://twitter.com/macarenapoo" target="_new">
+        { Icons.Twitter }
+      </a>
     </div>
   </div>
 )

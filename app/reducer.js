@@ -12,7 +12,8 @@ export const Actions = {
   REQUEST_POSTS: "REQUEST_POSTS",
   RECEIVE_POSTS: "RECEIVE_POSTS",
   SHOW_DETAILS: "SHOW_DETAILS",
-  SET_ACTIVE_POST: "SET_ACTIVE_POST"
+  SET_ACTIVE_POST: "SET_ACTIVE_POST",
+  CLOSE_DETAILS: "CLOSE_DETAILS"
 }
 
 export const reducer = (state, action) => {
@@ -35,6 +36,10 @@ export const reducer = (state, action) => {
 
     case Actions.SHOW_DETAILS: {
       return state.set("showDetails", true)
+    }
+
+    case Actions.CLOSE_DETAILS: {
+      return state.set("showDetails", false)
     }
 
     case Actions.SET_ACTIVE_POST: {

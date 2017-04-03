@@ -13,15 +13,20 @@
 }
 
 .socialIcons {
-
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: 20px 0;
 }
 
 .icon {
-
+  width: 30px;
+  margin: 0 20px;
 }
 
 .email {
   composes: icon;
+  padding-top: 5px;
 }
 
 .linkedIn {
@@ -30,4 +35,5 @@
 
 .twitter {
   composes: icon;
+  padding-top: 5px;
 }

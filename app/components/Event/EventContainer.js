@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => ({
   onShowDetails: (id) => dispatch({
     type: Actions.SHOW_DETAILS
   }),
+  onCloseDetails: () => dispatch({
+    type: Actions.CLOSE_DETAILS
+  }),
   onSetActivePost: (id) => dispatch({
     type: Actions.SET_ACTIVE_POST,
     postID: id
