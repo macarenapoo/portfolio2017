@@ -1,27 +1,30 @@
 import React from 'react'
 import _ from 'lodash'
-import styles from './TimeLine.css'
-import renderHTML from 'react-render-html'
 import moment from 'moment'
+import styles from './TimeLine.css'
+import cx from 'classnames'
+
+import Event from 'components/Event'
 
 const TimeLine = ({
-  timeline
+  timeline,
+  showDetails,
+  onToggleDetails
 }) => {
+  const wrapperClasses = cx({
+    [styles.yearWrapper]: true,
+    [styles.yearWrapperDetails]: showDetails
+  })
+
   return (
     <div className={ styles.timeLine }>
       { timeline.map( (year) => (
-       <div className={ styles.yearWrapper }>
+       <div className={ wrapperClasses }>
           <div className={ styles.yearEvents }>
            { year.months.map( (month) => (
              <div className={ styles.month }>
                { month.events.map( (event) => (
-                 <div className={ styles.event }>
-                   <div className={ styles.date }>
-                    { moment(event.date).format("MMMM YYYY")}
-                   </div>
-                   <div className={ styles.bullet }></div>
-                   <div className={ styles.title }>{event.title}</div>
-                 </div>
+                 <Event post={event}/>
                ))}
              </div>
            ))}
@@ -41,5 +44,5 @@ timeline = [
   { year: "2005", events: [] }
 ]
 
-<div>{ renderHTML(event.content) }</div>
+
 */

@@ -1,0 +1,17 @@
+.icon {
+  transition: transform .3s ease-in-out;
+  cursor: pointer;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+.icon path{
+  fill: $gray;
+}
+
+.icon:hover path {
+  fill: $red;
+
+}

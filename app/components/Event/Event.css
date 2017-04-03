@@ -1,0 +1,96 @@
+.event {
+  margin: 20px 0;
+  padding-left: 30px;
+  position: relative;
+}
+
+.title {
+  cursor: pointer;
+  padding: 0 10px;
+  transition: all .5s ease-in-out;
+  display: inline-block;
+}
+
+.bullet {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: $gray;
+  display: block;
+  position: absolute;
+  left: -5px;
+  top: 9px;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+}
+
+.date {
+  position: absolute;
+  left: -105%;
+  text-align: right;
+  width: 100%;
+  padding-right: 40px;
+  font-size: 12px;
+  color: $red;
+  top: 5px;
+  opacity: 0;
+  transition: all .3s ease-in-out;
+}
+
+.event:hover .bullet,
+.activeEvent .bullet {
+  transform: scale(1.5);
+  background-color: $red;
+}
+
+.event:hover .date,
+.activeEvent .date {
+  top: 5px;
+  opacity: 1;
+  left:-100%;
+}
+
+.activeEvent .title{
+  background-color: $yellow;
+  transform: scale(1.2);
+  margin-left: 20px;
+}
+
+.content {
+  opacity: 0;
+  transition: opacity .3s ease-in;
+}
+
+.activeContent {
+  opacity: 1;
+  margin: 20px;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.content h3 {
+  color: $red;
+  font-weight: 500;
+  margin: 15px 0;
+}
+
+.content p {
+  margin-bottom: 20px;
+}
+
+.content img {
+  height: auto !important;
+  max-width: 100%;
+  border: solid 1px $lightGray;
+}
+
+.content a {
+  color: $red;
+}
+
+.content a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

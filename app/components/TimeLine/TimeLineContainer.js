@@ -16,8 +16,10 @@ function formatTimeLine(posts) {
   // get the relevant information for each event
   const orderedEvents = _.chain(posts)
       .map((post) => ({
+        id: post._id,
         type: post.type_slug,
         title: post.title,
+        slug: post.slug,
         date: getDate(post),
         content: post.content}))
       .orderBy(['date'],['desc'])
@@ -54,11 +56,13 @@ function formatTimeLine(posts) {
 }
 
 const mapStateToProps = (state) => ({
-  timeline: formatTimeLine(state.posts)
+  timeline: formatTimeLine(state.posts),
+  showDetails: state.showDetails
 })
 
 const mapDispatchToProps = (dispatch) => ({
-   onLoadContent: () => dispatch({type: Actions.LOAD_CONTENT, value: false})
+   onLoadContent: () => dispatch({type: Actions.LOAD_CONTENT, value: false}),
+
  })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeLine)

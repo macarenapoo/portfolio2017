@@ -2,13 +2,17 @@ import Immutable from 'seamless-immutable'
 
 export const initialState = Immutable({
   loader: true,
-  posts: []
+  posts: [],
+  showDetails: false,
+  activePost: null
 })
 
 export const Actions = {
   LOAD_CONTENT: "LOAD_CONTENT",
   REQUEST_POSTS: "REQUEST_POSTS",
-  RECEIVE_POSTS: "RECEIVE_POSTS"
+  RECEIVE_POSTS: "RECEIVE_POSTS",
+  SHOW_DETAILS: "SHOW_DETAILS",
+  SET_ACTIVE_POST: "SET_ACTIVE_POST"
 }
 
 export const reducer = (state, action) => {
@@ -29,6 +33,13 @@ export const reducer = (state, action) => {
       });
     }
 
+    case Actions.SHOW_DETAILS: {
+      return state.set("showDetails", true)
+    }
+
+    case Actions.SET_ACTIVE_POST: {
+      return state.set("activePost", action.postID)
+    }
 
     default:
       return state
