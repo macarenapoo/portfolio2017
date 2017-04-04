@@ -5,6 +5,7 @@ import Event from './Event.js'
 
 const mapStateToProps = (state, props) => ({
   isActive: state.activePost === props.post.id && state.showDetails,
+  activePost: state.activePost,
   showDetails: state.showDetails
 })
 

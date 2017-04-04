@@ -30,3 +30,16 @@
 .month {
   min-height: 20px;
 }
+
+
+/* Media Queries */
+
+@media only screen and (max-width: 400px) {
+  .yearWrapper {
+    margin-left: 35%;
+  }
+
+  .yearWrapperDetails {
+    margin-left: 5%;
+  }
+}

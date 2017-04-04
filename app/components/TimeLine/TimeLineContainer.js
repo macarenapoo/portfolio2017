@@ -21,6 +21,7 @@ function formatTimeLine(posts) {
         title: post.title,
         slug: post.slug,
         date: getDate(post),
+        metafields: post.metafields,
         content: post.content}))
       .orderBy(['date'],['desc'])
       .value(),
