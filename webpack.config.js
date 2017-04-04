@@ -2,7 +2,9 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin"),
   postCssSimpleVars = require("postcss-simple-vars"),
   cssVariables = require("./src/css-variables.js"),
   autoprefixer = require("autoprefixer"),
-  cssLoaderConfig = "css-loader?modules&importLoaders=1&localIdentName=[name]_[local]__[hash:base64:5]!postcss-loader";
+  cssLoaderConfig = "css-loader?modules&importLoaders=1&localIdentName=[name]_[local]__[hash:base64:5]!postcss-loader",
+  webpack = require("webpack"),
+  CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   entry: './app/index.js',
@@ -12,8 +14,7 @@ module.exports = {
   },
   devServer: {
     inline: true,
-    port: 3333,
-    contentBase: 'public'
+    port: 3333
   },
   module: {
     loaders: [
@@ -51,6 +52,26 @@ module.exports = {
     ];
   },
   plugins: [
-    new ExtractTextPlugin("bundle.css")
+    new ExtractTextPlugin("bundle.css"),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new CompressionPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
   ]
 };
